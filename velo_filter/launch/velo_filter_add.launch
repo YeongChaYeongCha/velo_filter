@@ -1,0 +1,15 @@
+<launch>
+   <arg name="voxel_size" default="0.07" />
+   <arg name="num_neigbor_points" default="10" />
+   <arg name="std_multiplier" default="0.5" />
+   <arg name="max_iterations" default="400" />
+   <arg name="distance_threshold" default="0.12" />
+
+   <node pkg="velo_filter" type="velo_filter_add_node" name="velo_filter_add_node" output="screen">
+      <param name="voxel_size" value="$(arg voxel_size)" />
+      <param name="num_neigbor_points" value="$(arg num_neigbor_points)" />
+      <param name="std_multiplier" value="$(arg std_multiplier)" />
+      <param name="max_iterations" value="$(arg max_iterations)" />
+      <param name="distance_threshold" value="$(arg distance_threshold)" />
+   </node>
+</launch>

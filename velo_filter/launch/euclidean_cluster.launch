@@ -1,0 +1,15 @@
+<launch>
+   <!-- Traffic cone | Cluster Tolerance : 0.5 -->
+   <arg name="cluster_tolerance" default="0.5" />
+   <!-- Traffic cone | Min Cluster Size : 10 -->
+   <arg name="min_cluster_size" default="10" />
+   <!-- Traffic cone | Max Cluster Size : 400 -->
+   <arg name="max_cluster_size" default="400" />
+
+   <node pkg="velo_filter" type="euclidean_cluster_node" name="euclidean_cluster_node" output="screen">
+      <param name="cluster_tolerance" value="$(arg cluster_tolerance)" />
+      <param name="min_cluster_size" value="$(arg min_cluster_size)" />
+      <param name="max_cluster_size" value="$(arg max_cluster_size)" />
+   </node>
+   <node type="rviz" name="rviz" pkg="rviz" args="-d $(find velo_filter)/rviz/clustering_boundingbox.rviz" output="log" respawn="true" />
+</launch>
